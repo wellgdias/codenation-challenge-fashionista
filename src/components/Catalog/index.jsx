@@ -1,21 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
 
 import Product from "../Product";
-
-import api from "../../services";
+import { loadCatalog } from "../../actions";
 
 import "./style.css";
 
 export default function Catalog() {
-  const [catalog, setCatalog] = useState([]);
+  const { catalog, loading, error } = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   useEffect(() => {
-    api.get("/catalog").then((response) => {
-      setCatalog(response.data);
-    });
-  }, []);
+    dispatch(loadCatalog());
+  }, [dispatch]);
 
   return (
+    // Usar o  loading e o error
     <section className="catalog">
       <div className="container">
         <p className="catalog__count">{catalog.length} itens</p>

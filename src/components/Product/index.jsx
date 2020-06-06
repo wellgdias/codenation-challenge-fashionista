@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 import "./style.css";
 
@@ -11,25 +12,32 @@ export default function Product(product) {
     actual_price,
   } = product.data;
 
-  // console.log(name.replace(/ /g, "-"));
+  // Mover a função para um "utils"
+  const productAddress = name
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/ /g, "-")
+    .toLowerCase();
 
   return (
     <>
       <div className="product__info">
-        <figure className="product__image">
-          {discount_percentage && (
-            <span className="product__discount">-{discount_percentage}</span>
-          )}
+        <Link to={`/produto/${productAddress}`}>
+          <figure className="product__image">
+            {discount_percentage && (
+              <span className="product__discount">-{discount_percentage}</span>
+            )}
 
-          {image ? (
-            <img src={image} alt={name} />
-          ) : (
-            <img
-              src="https://via.placeholder.com/470x594/FFFFFF/?text=Imagem+Indisponível"
-              alt={name}
-            />
-          )}
-        </figure>
+            {image ? (
+              <img src={image} alt={name} />
+            ) : (
+              <img
+                src="https://via.placeholder.com/470x594/FFFFFF/?text=Imagem+Indisponível"
+                alt={name}
+              />
+            )}
+          </figure>
+        </Link>
         <h3 className="product__name">{name}</h3>
         <div className="product__pricing">
           {regular_price === actual_price ? (
