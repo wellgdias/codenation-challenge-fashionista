@@ -2,37 +2,57 @@ import {
   LOAD_CATALOG_ERROR,
   LOAD_CATALOG_LOADING,
   LOAD_CATALOG_SUCCESS,
+  SET_PRODUCT_INFO,
 } from "./actionTypes";
 
 const initialState = {
-  catalog: [],
-  loading: false,
-  error: "",
+  catalog: {
+    products: [],
+    loading: false,
+    error: "",
+  },
+  productDetail: {},
 };
 
-export default function reduxThunkReducer(state = initialState, action) {
+export default function Reducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_CATALOG_LOADING: {
       return {
         ...state,
-        loading: true,
-        error: "",
+        catalog: {
+          loading: true,
+          error: "",
+        },
       };
     }
     case LOAD_CATALOG_SUCCESS: {
       return {
         ...state,
-        catalog: action.data,
-        loading: false,
+        catalog: {
+          products: action.data,
+          loading: false,
+        },
       };
     }
     case LOAD_CATALOG_ERROR: {
       return {
         ...state,
-        loading: false,
-        error: action.error,
+        catalog: {
+          loading: false,
+          error: action.error,
+        },
       };
     }
+    case SET_PRODUCT_INFO: {
+      const product = state.catalog.products.filter(
+        (product) => product.id === action.payload
+      );
+      return {
+        ...state,
+        productDetail: product[0],
+      };
+    }
+
     default: {
       return state;
     }

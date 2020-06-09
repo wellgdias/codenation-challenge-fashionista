@@ -1,11 +1,11 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+
+import ProductDetail from "../../components/ProductDetail";
 
 export default function Product() {
-  let { id } = useParams();
   return (
-    <>
-      <h1>Informações dos produtos: {id}</h1>
-    </>
+    <div className="product__detail">
+      <ProductDetail />
+    </div>
   );
 }

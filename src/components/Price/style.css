@@ -1,0 +1,16 @@
+.product__pricing {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.product__price {
+  font-size: 14px;
+}
+
+.product__price--from {
+  margin-right: 6px;
+  font-size: 11px;
+  color: #ca5452;
+  text-decoration: line-through;
+}

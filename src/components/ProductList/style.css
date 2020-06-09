@@ -1,0 +1,12 @@
+.product__info {
+  padding: 10px 4px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  cursor: pointer;
+}
+
+
+
+

@@ -2,6 +2,7 @@ import {
   LOAD_CATALOG_ERROR,
   LOAD_CATALOG_LOADING,
   LOAD_CATALOG_SUCCESS,
+  SET_PRODUCT_INFO,
 } from "./actionTypes";
 
 import api from "./services";
@@ -9,12 +10,28 @@ import api from "./services";
 export const loadCatalog = () => (dispatch) => {
   dispatch({ type: LOAD_CATALOG_LOADING });
 
+  let id = 0; //alterar com a nova API
   api.get("/catalog").then(
-    (response) => dispatch({ type: LOAD_CATALOG_SUCCESS, data: response.data }),
+    (response) =>
+      dispatch({
+        type: LOAD_CATALOG_SUCCESS,
+        data: response.data.map((data) => {
+          id = id + 1;
+          data.id = id;
+          return data;
+        }),
+      }),
     (error) =>
       dispatch({
         type: LOAD_CATALOG_ERROR,
         error: error.message || "Unexpected Error!!!",
       })
   );
+};
+
+export const setProductInfo = (id) => {
+  return {
+    type: SET_PRODUCT_INFO,
+    payload: id,
+  };
 };
