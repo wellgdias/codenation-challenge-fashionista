@@ -1,19 +1,18 @@
 import React from "react";
-import { useSelector } from "react-redux";
 
 import "./style.css";
 
 export default function Price({ regular, atual, installments }) {
-  const { local } = useSelector((state) => state);
+  const pathname = window.location.pathname;
 
   const product__pricing =
-    local === "Home" ? "product__pricing--home" : "product__pricing--product";
+    pathname === "/" ? "product__pricing--home" : "product__pricing--product";
 
   const product__price =
-    local === "Home" ? "product__price--home" : "product__price--product";
+    pathname === "/" ? "product__price--home" : "product__price--product";
 
   const price__from =
-    local === "Home" ? "price__from--home" : "price__frome--product";
+    pathname === "/" ? "price__from--home" : "price__frome--product";
 
   return (
     <div className={product__pricing}>

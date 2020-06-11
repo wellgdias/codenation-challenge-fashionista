@@ -17,8 +17,3 @@
   z-index: 0;
 }
 
-/* @media only screen and (max-width: 480px) {
-  .catalog__list {
-    grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
-  }
-} */

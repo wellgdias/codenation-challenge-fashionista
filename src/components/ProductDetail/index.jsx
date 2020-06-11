@@ -1,5 +1,7 @@
 import React, { useState } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+
+import { setProductCart } from "../../actions";
 
 import Image from "../Image";
 import Price from "../Price";
@@ -12,8 +14,10 @@ import "./style.css";
 export default function Product() {
   const [selectedSize, setSelectedSize] = useState();
   const { productDetail } = useSelector((state) => state);
+  const dispatch = useDispatch();
 
   const {
+    id,
     image,
     name,
     regular_price,
@@ -32,6 +36,10 @@ export default function Product() {
       : "product__size";
   }
 
+  function handleClickAddCart(id, size) {
+    dispatch(setProductCart(id, size));
+  }
+
   return (
     <section className="product">
       <Container>
@@ -41,7 +49,7 @@ export default function Product() {
           </div>
 
           <div className="product__content">
-            <ProductName name={name} />
+            <ProductName>{name}</ProductName>
             <Price
               regular={regular_price}
               atual={actual_price}
@@ -62,7 +70,12 @@ export default function Product() {
                 )
             )}
             <div className="product__add">
-              <Button className="product__cart">Adicionar à sacola</Button>
+              <Button
+                className="product__cart"
+                onClick={() => handleClickAddCart(id, selectedSize)}
+              >
+                Adicionar à sacola
+              </Button>
               {/*Continuar comprando*/}
             </div>
           </div>

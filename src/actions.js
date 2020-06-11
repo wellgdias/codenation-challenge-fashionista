@@ -3,7 +3,7 @@ import {
   LOAD_CATALOG_LOADING,
   LOAD_CATALOG_SUCCESS,
   SET_PRODUCT_INFO,
-  SET_LOCAL,
+  SET_PRODUCT_CART,
 } from "./actionTypes";
 
 import api from "./services";
@@ -37,9 +37,10 @@ export const setProductInfo = (id) => {
   };
 };
 
-export const setLocal = (local) => {
+export const setProductCart = (id, size) => {
   return {
-    type: SET_LOCAL,
-    payload: local,
+    type: SET_PRODUCT_CART,
+    size: size,
+    id: id,
   };
 };

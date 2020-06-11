@@ -7,10 +7,11 @@ import Price from "../Price";
 import ProductName from "../ProductName";
 
 import { setProductInfo } from "../../actions";
+import { createPath } from "../../utils";
 
 import "./style.css";
 
-export default function Product(product) {
+export default function Product({ product }) {
   const {
     id,
     discount_percentage,
@@ -18,16 +19,10 @@ export default function Product(product) {
     name,
     regular_price,
     actual_price,
-  } = product.data;
+  } = product;
 
-  const dispatch = useDispatch();
-
-  // Mover a função para um "utils"
-  const path = name
-    .normalize("NFD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .replace(/ /g, "-")
-    .toLowerCase();
+  const dispatch = useDispatch(); // Mover a função para um "utils"
+  const path = createPath(name);
 
   function handleSetProductId() {
     dispatch(setProductInfo(id));
@@ -38,8 +33,7 @@ export default function Product(product) {
       <Link to={`/produto/${path}`} onClick={handleSetProductId}>
         <Image image={image} name={name} discount={discount_percentage} />
       </Link>
-      {/* Usar selector para definir local para usar na formatação do name e price */}
-      <ProductName name={name} />
+      <ProductName>{name}</ProductName>
       <Price regular={regular_price} atual={actual_price} />
     </div>
   );

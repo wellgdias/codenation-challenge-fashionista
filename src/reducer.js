@@ -3,8 +3,10 @@ import {
   LOAD_CATALOG_LOADING,
   LOAD_CATALOG_SUCCESS,
   SET_PRODUCT_INFO,
-  SET_LOCAL,
+  SET_PRODUCT_CART,
 } from "./actionTypes";
+
+const sumPrice = (x, y) => x + y;
 
 const initialState = {
   local: "",
@@ -54,6 +56,10 @@ const initialState = {
       },
     ],
   },
+  cart: {
+    products: [],
+    amount: 0,
+  },
 };
 
 export default function Reducer(state = initialState, action) {
@@ -95,10 +101,42 @@ export default function Reducer(state = initialState, action) {
       };
     }
 
-    case SET_LOCAL: {
+    case SET_PRODUCT_CART: {
+      const productsCart = state.cart.products.map((product) => {
+        if (
+          product.info.id === action.id &&
+          product.selectedSize === action.size
+        ) {
+          product.amount += 1;
+        }
+        return product;
+      });
+
+      const isProduct = state.cart.products.filter((product) => {
+        return (
+          product.info.id === action.id && product.selectedSize === action.size
+        );
+      });
+
+      if (isProduct.length === 0) {
+        const product = {
+          info: state.productDetail,
+          selectedSize: action.size,
+          amount: 1,
+        };
+        productsCart.push(product);
+      }
+
+      const amountCart = productsCart
+        .map((product) => product.amount)
+        .reduce(sumPrice, 0);
+
       return {
         ...state,
-        local: action.payload,
+        cart: {
+          products: productsCart,
+          amount: amountCart,
+        },
       };
     }
 

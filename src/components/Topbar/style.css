@@ -44,3 +44,23 @@
 .menu__icon--search {
   margin-right: 20px;
 }
+.menu__icon--cart {
+  margin-right: 10px;
+}
+
+.menu__counter {
+  overflow: hidden;
+  position: absolute;
+  right: -7px;
+  height: 18px;
+  width: 18px;
+  border-radius: 50%;
+  background: #cf3838;
+  color: #fff;
+  line-height: 18px;
+  text-align: center;
+  padding: 0;
+  font-size: 12px;
+  font-weight: 700;
+  white-space: nowrap;
+}
