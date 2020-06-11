@@ -39,7 +39,7 @@ export default function Product(product) {
         <Image image={image} name={name} discount={discount_percentage} />
       </Link>
       {/* Usar selector para definir local para usar na formatação do name e price */}
-      <ProductName name={name} local="Home" />
+      <ProductName name={name} />
       <Price regular={regular_price} atual={actual_price} />
     </div>
   );

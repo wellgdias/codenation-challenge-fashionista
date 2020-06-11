@@ -1,13 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 
 import Image from "../Image";
 import Price from "../Price";
 import ProductName from "../ProductName";
+import Button from "../Button";
+import Container from "../Container";
 
 import "./style.css";
 
 export default function Product() {
+  const [selectedSize, setSelectedSize] = useState();
   const { productDetail } = useSelector((state) => state);
 
   const {
@@ -19,33 +22,52 @@ export default function Product() {
     sizes,
   } = productDetail;
 
+  function handleClickSize(size) {
+    setSelectedSize(size);
+  }
+
+  function isSelected(size) {
+    return size === selectedSize
+      ? "product__size is-selected"
+      : "product__size";
+  }
+
   return (
     <section className="product">
-      <div className="container">
+      <Container>
         <div className="product__detail">
-          <div className="product__default">
+          <div className="immage__contente">
             <Image image={image} name={name} />
           </div>
 
-          <div className="product__">
+          <div className="product__content">
             <ProductName name={name} />
-            <Price regular={regular_price} atual={actual_price} />
-            <span className="product__installments">em até {installments}</span>
-            <p className="product__choose">Escolha um tamanho</p>
+            <Price
+              regular={regular_price}
+              atual={actual_price}
+              installments={installments}
+            />
 
+            <p className="product__choose">Escolha um tamanho</p>
             {sizes?.map(
               (size) =>
                 size.available && (
-                  <button className="product__size" key={size.sku}>
+                  <Button
+                    className={isSelected(size.size)}
+                    key={size.sku}
+                    onClick={() => handleClickSize(size.size)}
+                  >
                     {size.size}
-                  </button>
+                  </Button>
                 )
             )}
-
-            <button className="product__addcart">Adicionar à sacola</button>
+            <div className="product__add">
+              <Button className="product__cart">Adicionar à sacola</Button>
+              {/*Continuar comprando*/}
+            </div>
           </div>
         </div>
-      </div>
+      </Container>
     </section>
   );
 }

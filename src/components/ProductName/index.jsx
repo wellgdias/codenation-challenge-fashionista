@@ -1,8 +1,11 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 import "./style.css";
 
-export default function ProductName({ name, local }) {
+export default function ProductName({ name }) {
+  const { local } = useSelector((state) => state);
+
   return (
     <>
       {local === "Home" ? (

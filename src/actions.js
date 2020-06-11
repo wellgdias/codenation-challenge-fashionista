@@ -3,6 +3,7 @@ import {
   LOAD_CATALOG_LOADING,
   LOAD_CATALOG_SUCCESS,
   SET_PRODUCT_INFO,
+  SET_LOCAL,
 } from "./actionTypes";
 
 import api from "./services";
@@ -33,5 +34,12 @@ export const setProductInfo = (id) => {
   return {
     type: SET_PRODUCT_INFO,
     payload: id,
+  };
+};
+
+export const setLocal = (local) => {
+  return {
+    type: SET_LOCAL,
+    payload: local,
   };
 };

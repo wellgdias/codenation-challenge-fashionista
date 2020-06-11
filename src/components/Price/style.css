@@ -1,16 +1,44 @@
-.product__pricing {
+.product__pricing--home {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.product__price {
+.product__pricing--product {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+  margin: 5px 2px;
+}
+
+.product__installments {
+  margin-left: 8px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #a7a7a7;
+  padding: 5px 0;
+}
+
+.product__price--home {
   font-size: 14px;
 }
 
-.product__price--from {
+.product__price--product {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.price__from--home,
+.price__frome--product {
   margin-right: 6px;
-  font-size: 11px;
+  margin-bottom: 2px;
   color: #ca5452;
   text-decoration: line-through;
+}
+
+.price__from--home {
+  font-size: 11px;
+}
+.price__frome--product {
+  font-size: 14px;
 }
