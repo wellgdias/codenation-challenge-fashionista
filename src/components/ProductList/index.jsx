@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 
 import Image from "../Image";
 import Price from "../Price";
-import ProductName from "../ProductName";
+import ProductName from "../Name";
 
 import { setProductInfo } from "../../actions";
 import { createPath } from "../../utils";

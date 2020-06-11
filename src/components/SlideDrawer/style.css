@@ -1,0 +1,32 @@
+.side__container {
+  display: block;
+  margin: 0 auto;
+}
+
+.side__drawer {
+  height: 100%;
+  background-color: #f9f9f9;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 25%;
+  z-index: 200;
+  box-shadow: 1px 0px 7px rgba(0, 0, 0, 0.5);
+  transform: translateX(100%);
+  transition: transform 0.3s ease-out;
+}
+
+.side__drawer.is-open {
+  transform: translateX(0);
+}
+
+.side__header {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  padding: 2%;
+}
+
+.side__name {
+  padding: 0 20px;
+}

@@ -5,7 +5,7 @@ import { setProductCart } from "../../actions";
 
 import Image from "../Image";
 import Price from "../Price";
-import ProductName from "../ProductName";
+import ProductName from "../Name";
 import Button from "../Button";
 import Container from "../Container";
 
@@ -13,6 +13,7 @@ import "./style.css";
 
 export default function Product() {
   const [selectedSize, setSelectedSize] = useState();
+  const [hasSize, sethasSize] = useState(false);
   const { productDetail } = useSelector((state) => state);
   const dispatch = useDispatch();
 
@@ -28,6 +29,7 @@ export default function Product() {
 
   function handleClickSize(size) {
     setSelectedSize(size);
+    sethasSize(false);
   }
 
   function isSelected(size) {
@@ -37,7 +39,11 @@ export default function Product() {
   }
 
   function handleClickAddCart(id, size) {
-    dispatch(setProductCart(id, size));
+    if (selectedSize) {
+      dispatch(setProductCart(id, size));
+    } else {
+      sethasSize(true);
+    }
   }
 
   return (
@@ -57,6 +63,12 @@ export default function Product() {
             />
 
             <p className="product__choose">Escolha um tamanho</p>
+            {hasSize && (
+              <p className="product__warning">
+                É necessário escolher um tamanho
+              </p>
+            )}
+
             {sizes?.map(
               (size) =>
                 size.available && (
@@ -69,6 +81,7 @@ export default function Product() {
                   </Button>
                 )
             )}
+
             <div className="product__add">
               <Button
                 className="product__cart"

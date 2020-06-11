@@ -4,12 +4,12 @@ import {
   LOAD_CATALOG_SUCCESS,
   SET_PRODUCT_INFO,
   SET_PRODUCT_CART,
+  SET_OPEN_DRAWER,
 } from "./actionTypes";
 
 const sumPrice = (x, y) => x + y;
 
 const initialState = {
-  local: "",
   catalog: {
     products: [],
     loading: false,
@@ -59,6 +59,10 @@ const initialState = {
   cart: {
     products: [],
     amount: 0,
+  },
+  drawer: {
+    receiver: "",
+    open: false,
   },
 };
 
@@ -136,6 +140,16 @@ export default function Reducer(state = initialState, action) {
         cart: {
           products: productsCart,
           amount: amountCart,
+        },
+      };
+    }
+
+    case SET_OPEN_DRAWER: {
+      return {
+        ...state,
+        drawer: {
+          receiver: action.receiver,
+          open: !state.drawer.open,
         },
       };
     }
