@@ -5,3 +5,5 @@ export function createPath(name) {
     .replace(/ /g, "-")
     .toLowerCase();
 }
+
+

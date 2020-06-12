@@ -5,6 +5,7 @@ import {
   SET_PRODUCT_INFO,
   SET_PRODUCT_CART,
   SET_OPEN_DRAWER,
+  SET_VALUE_FILTER,
 } from "./actionTypes";
 
 const sumPrice = (x, y) => x + y;
@@ -60,6 +61,7 @@ const initialState = {
     products: [],
     amount: 0,
   },
+  filterProducts: [],
   drawer: {
     receiver: "",
     open: false,
@@ -124,6 +126,7 @@ export default function Reducer(state = initialState, action) {
 
       if (isProduct.length === 0) {
         const product = {
+          id: action.id + action.size,
           info: state.productDetail,
           selectedSize: action.size,
           amount: 1,
@@ -151,6 +154,22 @@ export default function Reducer(state = initialState, action) {
           receiver: action.receiver,
           open: !state.drawer.open,
         },
+      };
+    }
+
+    case SET_VALUE_FILTER: {
+      let filteredProducts;
+      if (action.value !== "") {
+        filteredProducts = state.catalog.products.filter((product) =>
+          product.name.toLowerCase().includes(action.value.toLowerCase())
+        );
+      } else {
+        filteredProducts = [];
+      }
+
+      return {
+        ...state,
+        filterProducts: filteredProducts,
       };
     }
 

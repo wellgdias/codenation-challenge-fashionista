@@ -1,11 +1,11 @@
-.side__container {
+.drawer__container {
   display: block;
   margin: 0 auto;
 }
 
-.side__drawer {
+.drawer {
   height: 100%;
-  background-color: #f9f9f9;
+  background: #f9f9f9;
   position: fixed;
   top: 0;
   right: 0;
@@ -16,17 +16,28 @@
   transition: transform 0.3s ease-out;
 }
 
-.side__drawer.is-open {
+@media only screen and (max-width: 1024px) {
+  .drawer {
+    width: 100%;
+  }
+}
+
+.drawer.is-open {
   transform: translateX(0);
 }
 
-.side__header {
+.drawer__header {
   display: flex;
   align-items: center;
   background: #fff;
   padding: 2%;
 }
 
-.side__name {
+.drawer__name {
   padding: 0 20px;
+}
+
+.drawer__content {
+  height: 100vh;
+  overflow-y: auto;
 }

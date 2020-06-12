@@ -28,14 +28,24 @@ export default function Product() {
   } = productDetail;
 
   function handleClickSize(size) {
-    setSelectedSize(size);
-    sethasSize(false);
+    if (size.available) {
+      setSelectedSize(size.size);
+      sethasSize(false);
+    }
   }
 
   function isSelected(size) {
-    return size === selectedSize
-      ? "product__size is-selected"
-      : "product__size";
+    let className;
+    if (size.available) {
+      className =
+        size.size === selectedSize
+          ? "product__size is-selected"
+          : "product__size";
+    } else {
+      className = "product__size is-disable";
+    }
+
+    return className;
   }
 
   function handleClickAddCart(id, size) {
@@ -50,7 +60,7 @@ export default function Product() {
     <section className="product">
       <Container>
         <div className="product__detail">
-          <div className="immage__contente">
+          <div className="image__content">
             <Image image={image} name={name} />
           </div>
 
@@ -69,18 +79,15 @@ export default function Product() {
               </p>
             )}
 
-            {sizes?.map(
-              (size) =>
-                size.available && (
-                  <Button
-                    className={isSelected(size.size)}
-                    key={size.sku}
-                    onClick={() => handleClickSize(size.size)}
-                  >
-                    {size.size}
-                  </Button>
-                )
-            )}
+            {sizes?.map((size) => (
+              <Button
+                className={isSelected(size)}
+                key={size.sku}
+                onClick={() => handleClickSize(size)}
+              >
+                {size.size}
+              </Button>
+            ))}
 
             <div className="product__add">
               <Button

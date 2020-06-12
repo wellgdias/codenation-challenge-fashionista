@@ -17,8 +17,25 @@
 .button__icon.icon--search {
   margin-right: 20px;
 }
+
 .button__icon.icon--cart {
   margin-right: 10px;
+}
+
+.button__icon.icon--minus,
+.button__icon.icon--plus {
+  font-size: 18px;
+  border-radius: 15%;
+  border: 1px solid;
+  padding: 2px;
+  background-color: #fff;
+  border-color: #dfdfdf;
+}
+
+.button__icon.icon--delete {
+  color: #ca5452;
+  font-size: 20px;
+  padding: 2px; 
 }
 
 .icon__counter {

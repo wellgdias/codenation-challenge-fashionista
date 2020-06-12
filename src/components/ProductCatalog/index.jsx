@@ -24,13 +24,14 @@ export default function Product({ product }) {
   const dispatch = useDispatch(); // Mover a função para um "utils"
   const path = createPath(name);
 
-  function handleSetProductId() {
+  function handleSetProductId(id) {
     dispatch(setProductInfo(id));
+    
   }
 
   return (
     <div className="product__info">
-      <Link to={`/produto/${path}`} onClick={handleSetProductId}>
+      <Link to={`/produto/${path}`} onClick={() => handleSetProductId(id)}>
         <Image image={image} name={name} discount={discount_percentage} />
       </Link>
       <ProductName>{name}</ProductName>

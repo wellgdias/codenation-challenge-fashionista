@@ -5,6 +5,7 @@ import {
   SET_PRODUCT_INFO,
   SET_PRODUCT_CART,
   SET_OPEN_DRAWER,
+  SET_VALUE_FILTER,
 } from "./actionTypes";
 
 import api from "./services";
@@ -50,5 +51,12 @@ export const setOpenDrawer = (receiver) => {
   return {
     type: SET_OPEN_DRAWER,
     receiver: receiver,
+  };
+};
+
+export const setValueFilter = (value) => {
+  return {
+    type: SET_VALUE_FILTER,
+    value: value,
   };
 };

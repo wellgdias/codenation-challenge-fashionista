@@ -54,6 +54,15 @@
   color: #fff;
 }
 
+.product__size.is-disable {
+  opacity: 0.5;
+  cursor: default;
+}
+
+.product__size.is-disable:hover {
+  border-color: #dfdfdf;
+}
+
 .product__size:hover,
 .product__cart:hover {
   border-color: #a7a7a7;

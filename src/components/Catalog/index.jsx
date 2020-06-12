@@ -1,7 +1,7 @@
 import React from "react";
 import { useSelector } from "react-redux";
 
-import Product from "../ProductList";
+import Product from "../ProductCatalog";
 import Container from "../Container";
 
 import "./style.css";

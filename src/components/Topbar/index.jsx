@@ -1,4 +1,6 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
+
 import { useDispatch, useSelector } from "react-redux";
 import { FiSearch, FiShoppingBag } from "react-icons/fi";
 
@@ -11,9 +13,14 @@ import "./style.css";
 export default function Topbar() {
   const { cart } = useSelector((state) => state);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   function handleOnClickOpenDrawer(receiver) {
     dispatch(setOpenDrawer(receiver));
+  }
+
+  function handleClickHome() {
+    history.push("/");
   }
 
   return (
@@ -21,7 +28,9 @@ export default function Topbar() {
       <div className="container">
         <div className="topbar__default">
           <div className="topbar__logo">
-            <h1 className="logo__name">Fashionista Store</h1>
+            <h1 className="logo__name" onClick={handleClickHome}>
+              Fashionista Store
+            </h1>
           </div>
 
           <div className="topbar__menu">
