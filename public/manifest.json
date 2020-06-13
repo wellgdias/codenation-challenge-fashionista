@@ -1,11 +1,11 @@
 {
   "name": "Rose Store",
   "short_name": "Rose Store",
-  "theme_color": "#ffc0cb",
-  "background_color": "#ffffff",
+  "theme_color": "#000000",
+  "background_color": "#ffc0cb",
   "display": "standalone",
   "Scope": "/",
-  "start_url": ".",
+  "start_url": "/",
   "icons": [
     {
       "src": "images/icons/icon-72x72.png",
