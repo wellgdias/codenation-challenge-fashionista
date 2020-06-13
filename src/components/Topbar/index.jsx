@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { FiSearch, FiShoppingBag } from "react-icons/fi";
 
 import Button from "../Button";
+import { ReactComponent as LogoSvg } from "../../assets/logo.svg";
 
 import { setOpenDrawer } from "../../actions";
 
@@ -27,10 +28,9 @@ export default function Topbar() {
     <header className="topbar">
       <div className="container">
         <div className="topbar__default">
-          <div className="topbar__logo">
-            <h1 className="logo__name" onClick={handleClickHome}>
-              Fashionista Store
-            </h1>
+          <div className="topbar__logo" onClick={handleClickHome}>
+            <LogoSvg />
+            <div className="logo__name">Rose Store</div>
           </div>
 
           <div className="topbar__menu">

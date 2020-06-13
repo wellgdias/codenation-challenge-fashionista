@@ -29,7 +29,7 @@
 .drawer__header {
   display: flex;
   align-items: center;
-  background: #fff;
+  background: #ffc0cb;
   padding: 2%;
 }
 
@@ -40,4 +40,16 @@
 .drawer__content {
   height: 100vh;
   overflow-y: auto;
+}
+
+.drawer__footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  padding: 2%;
+  height: 5%;
+  font-weight: bold;
+  background-color: #db7093;
+  color: #f9f9f9;
 }

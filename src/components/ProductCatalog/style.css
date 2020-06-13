@@ -7,6 +7,6 @@
   cursor: pointer;
 }
 
-
-
-
+.product__info:hover {
+  opacity: 0.6;
+}

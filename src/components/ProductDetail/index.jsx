@@ -51,6 +51,7 @@ export default function Product() {
   function handleClickAddCart(id, size) {
     if (selectedSize) {
       dispatch(setProductCart(id, size));
+      setSelectedSize();
     } else {
       sethasSize(true);
     }

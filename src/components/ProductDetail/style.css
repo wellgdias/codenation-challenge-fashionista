@@ -49,23 +49,21 @@
 }
 
 .product__size.is-selected {
-  background-color: #a7a7a7;
-  border-color: #dfdfdf;
-  color: #fff;
+  background-color: #ffc0cb;
+  border-color: #ffb6c1;
+  font-weight: bold;
 }
 
 .product__size.is-disable {
   opacity: 0.5;
   cursor: default;
-}
-
-.product__size.is-disable:hover {
+  pointer-events: none;
   border-color: #dfdfdf;
 }
 
 .product__size:hover,
 .product__cart:hover {
-  border-color: #a7a7a7;
+  border-color: #db7093;
 }
 
 .product__cart {
@@ -76,6 +74,8 @@
   font-size: 20px;
   padding: 2px 0;
   font-weight: 700;
-  background-color: #fff;
-  border-color: #dfdfdf;
+  background-color: #db7093;
+  border-color: #ffc0cb;
+  color: #fff;
 }
+

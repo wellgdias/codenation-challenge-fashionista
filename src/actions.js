@@ -6,6 +6,8 @@ import {
   SET_PRODUCT_CART,
   SET_OPEN_DRAWER,
   SET_VALUE_FILTER,
+  SET_AMOUNT_PRODUCT,
+  DELETE_PRODUCT_CART,
 } from "./actionTypes";
 
 import api from "./services";
@@ -58,5 +60,20 @@ export const setValueFilter = (value) => {
   return {
     type: SET_VALUE_FILTER,
     value: value,
+  };
+};
+
+export const setAmountProduct = (id, operation) => {
+  return {
+    type: SET_AMOUNT_PRODUCT,
+    id: id,
+    operation: operation,
+  };
+};
+
+export const deleteProductcart = (id) => {
+  return {
+    type: DELETE_PRODUCT_CART,
+    id: id,
   };
 };

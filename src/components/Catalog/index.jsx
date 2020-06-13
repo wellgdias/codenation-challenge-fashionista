@@ -8,7 +8,7 @@ import "./style.css";
 
 export default function Catalog() {
   const { catalog } = useSelector((state) => state);
-  const { products, loading, error } = catalog;
+  const { products, loading } = catalog;
 
   return (
     <>

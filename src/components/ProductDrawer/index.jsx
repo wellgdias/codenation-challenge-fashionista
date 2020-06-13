@@ -1,6 +1,8 @@
 import React from "react";
-
+import { useDispatch } from "react-redux";
 import { FiPlus, FiMinus, FiTrash2 } from "react-icons/fi";
+
+import { setAmountProduct, deleteProductcart } from "../../actions";
 
 import Image from "../Image";
 import Button from "../Button";
@@ -11,6 +13,21 @@ export default function ProductFilter(props) {
   const product =
     props.drawer === "filter" ? props.product : props.product.info;
   const { name, image, actual_price, installments } = product;
+  const dispatch = useDispatch();
+
+  function handleOnClickAmount(id, operation) {
+    dispatch(setAmountProduct(id, operation));
+  }
+
+  function handleOnClickDelete(id) {
+    dispatch(deleteProductcart(id));
+  }
+
+  function isMinimumAmount(amount) {
+    return amount === 1
+      ? "button__icon icon--minimum"
+      : "button__icon icon--minus";
+  }
 
   return (
     <div className="drawer__product">
@@ -28,15 +45,15 @@ export default function ProductFilter(props) {
             <div className="details__button">
               <div className="details__amount">
                 <Button
-                  className="button__icon icon--minus"
-                  // onClick={() => (handleOnClickOpenDrawer("filter"))}
+                  className={isMinimumAmount(props.product.amount)}
+                  onClick={() => handleOnClickAmount(props.product.id, "minus")}
                 >
                   <FiMinus />
                 </Button>
                 <span className="amount">{props.product.amount}</span>
                 <Button
                   className="button__icon icon--plus"
-                  // onClick={() => (handleOnClickOpenDrawer("filter"))}
+                  onClick={() => handleOnClickAmount(props.product.id, "plus")}
                 >
                   <FiPlus />
                 </Button>
@@ -44,7 +61,7 @@ export default function ProductFilter(props) {
               <div className="details__delete">
                 <Button
                   className="button__icon icon--delete"
-                  // onClick={() => (handleOnClickOpenDrawer("filter"))}
+                  onClick={() => handleOnClickDelete(props.product.id)}
                 >
                   <FiTrash2 />
                 </Button>
@@ -59,6 +76,8 @@ export default function ProductFilter(props) {
         <span className="price__atual">{actual_price}</span>
         <span className="price__installments">{installments}</span>
       </div>
+
+      <footer className="drawer__footer">SubTotal: R$100,00</footer>
     </div>
   );
 }

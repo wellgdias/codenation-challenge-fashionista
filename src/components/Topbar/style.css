@@ -1,5 +1,5 @@
 .topbar {
-  background: #fff;
+  background: #ffc0cb;
   display: block;
   align-items: center;
   justify-content: space-between;
@@ -21,6 +21,21 @@
   display: flex;
   align-items: center;
   cursor: pointer;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+.topbar__logo:hover {
+  color: #db7093;
+}
+
+.topbar__logo svg {
+  width: 30px;
+}
+
+.topbar__logo svg:hover,
+.topbar__logo:hover {
+  fill: #db7093;
 }
 
 .topbar__menu {

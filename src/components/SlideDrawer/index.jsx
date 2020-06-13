@@ -7,6 +7,7 @@ import DrawerFilter from "../DrawerFilter";
 import DrawerCart from "../DrawerCart";
 
 import { setOpenDrawer, setValueFilter } from "../../actions";
+import { numberFormatter } from "../../utils";
 
 import "./style.css";
 
@@ -39,7 +40,16 @@ export default function SlideDrawer() {
           )}
         </header>
         <div className="drawer__content">
-          {drawer.receiver === "cart" ? <DrawerCart /> : <DrawerFilter />}
+          {drawer.receiver === "cart" ? (
+            <>
+              <DrawerCart />
+              <footer className="drawer__footer">
+                SubTotal: {numberFormatter.format(cart.total)}
+              </footer>
+            </>
+          ) : (
+            <DrawerFilter />
+          )}
         </div>
       </div>
     </div>

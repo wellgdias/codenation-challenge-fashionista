@@ -6,9 +6,9 @@ import {
   SET_PRODUCT_CART,
   SET_OPEN_DRAWER,
   SET_VALUE_FILTER,
+  SET_AMOUNT_PRODUCT,
+  DELETE_PRODUCT_CART,
 } from "./actionTypes";
-
-const sumPrice = (x, y) => x + y;
 
 const initialState = {
   catalog: {
@@ -60,12 +60,23 @@ const initialState = {
   cart: {
     products: [],
     amount: 0,
+    total: 0,
   },
   filterProducts: [],
   drawer: {
     receiver: "",
     open: false,
   },
+};
+
+const sumPrice = (x, y) => x + y;
+
+const sumAmountCart = (products) => {
+  return products.map((product) => product.amount).reduce(sumPrice, 0);
+};
+
+const sumTotalCart = (products) => {
+  return products.map((product) => product.total).reduce(sumPrice, 0);
 };
 
 export default function Reducer(state = initialState, action) {
@@ -114,35 +125,41 @@ export default function Reducer(state = initialState, action) {
           product.selectedSize === action.size
         ) {
           product.amount += 1;
+          product.total =
+            parseFloat(product.info.actual_price.replace("R$ ", "")) *
+            product.amount;
         }
         return product;
       });
 
-      const isProduct = state.cart.products.filter((product) => {
+      const hasProduct = state.cart.products.filter((product) => {
         return (
           product.info.id === action.id && product.selectedSize === action.size
         );
       });
 
-      if (isProduct.length === 0) {
+      if (hasProduct.length === 0) {
         const product = {
           id: action.id + action.size,
           info: state.productDetail,
           selectedSize: action.size,
+          total: parseFloat(
+            state.productDetail.actual_price.replace("R$ ", "")
+          ),
           amount: 1,
         };
         productsCart.push(product);
       }
 
-      const amountCart = productsCart
-        .map((product) => product.amount)
-        .reduce(sumPrice, 0);
+      const amountCart = sumAmountCart(productsCart);
+      const totalCart = sumTotalCart(productsCart);
 
       return {
         ...state,
         cart: {
           products: productsCart,
           amount: amountCart,
+          total: totalCart,
         },
       };
     }
@@ -170,6 +187,51 @@ export default function Reducer(state = initialState, action) {
       return {
         ...state,
         filterProducts: filteredProducts,
+      };
+    }
+
+    case SET_AMOUNT_PRODUCT: {
+      const productsCart = state.cart.products.map((product) => {
+        if (product.id === action.id) {
+          action.operation === "plus"
+            ? (product.amount += 1)
+            : (product.amount -= 1);
+
+          product.total =
+            parseFloat(product.info.actual_price.replace("R$ ", "")) *
+            product.amount;
+        }
+        return product;
+      });
+
+      const amountCart = sumAmountCart(productsCart);
+      const totalCart = sumTotalCart(productsCart);
+
+      return {
+        ...state,
+        cart: {
+          products: productsCart,
+          amount: amountCart,
+          total: totalCart,
+        },
+      };
+    }
+
+    case DELETE_PRODUCT_CART: {
+      const productsCart = state.cart.products.filter(
+        (product) => product.id !== action.id
+      );
+
+      const amountCart = sumAmountCart(productsCart);
+      const totalCart = sumTotalCart(productsCart);
+
+      return {
+        ...state,
+        cart: {
+          products: productsCart,
+          amount: amountCart,
+          total: totalCart,
+        },
       };
     }
 
