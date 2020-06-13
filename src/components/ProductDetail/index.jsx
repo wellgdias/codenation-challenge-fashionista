@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 import { setProductCart } from "../../actions";
 
@@ -16,6 +17,7 @@ export default function Product() {
   const [hasSize, sethasSize] = useState(false);
   const { productDetail } = useSelector((state) => state);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const {
     id,
@@ -59,49 +61,52 @@ export default function Product() {
 
   return (
     <section className="product">
-      <Container>
-        <div className="product__detail">
-          <div className="image__content">
-            <Image image={image} name={name} />
-          </div>
+      {productDetail.length === 0 ? (
+        history.push("/")
+      ) : (
+        <Container>
+          <div className="product__detail">
+            <div className="image__content">
+              <Image image={image} name={name} />
+            </div>
 
-          <div className="product__content">
-            <ProductName>{name}</ProductName>
-            <Price
-              regular={regular_price}
-              atual={actual_price}
-              installments={installments}
-            />
+            <div className="product__content">
+              <ProductName>{name}</ProductName>
+              <Price
+                regular={regular_price}
+                atual={actual_price}
+                installments={installments}
+              />
 
-            <p className="product__choose">Escolha um tamanho</p>
-            {hasSize && (
-              <p className="product__warning">
-                É necessário escolher um tamanho
-              </p>
-            )}
+              <p className="product__choose">Escolha um tamanho</p>
+              {hasSize && (
+                <p className="product__warning">
+                  É necessário escolher um tamanho
+                </p>
+              )}
 
-            {sizes?.map((size) => (
-              <Button
-                className={isSelected(size)}
-                key={size.sku}
-                onClick={() => handleClickSize(size)}
-              >
-                {size.size}
-              </Button>
-            ))}
+              {sizes?.map((size) => (
+                <Button
+                  className={isSelected(size)}
+                  key={size.sku}
+                  onClick={() => handleClickSize(size)}
+                >
+                  {size.size}
+                </Button>
+              ))}
 
-            <div className="product__add">
-              <Button
-                className="product__cart"
-                onClick={() => handleClickAddCart(id, selectedSize)}
-              >
-                Adicionar à sacola
-              </Button>
-              {/*Continuar comprando*/}
+              <div className="product__add">
+                <Button
+                  className="product__cart"
+                  onClick={() => handleClickAddCart(id, selectedSize)}
+                >
+                  Adicionar à sacola
+                </Button>
+              </div>
             </div>
           </div>
-        </div>
-      </Container>
+        </Container>
+      )}
     </section>
   );
 }

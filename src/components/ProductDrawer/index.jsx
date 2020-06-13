@@ -76,8 +76,6 @@ export default function ProductFilter(props) {
         <span className="price__atual">{actual_price}</span>
         <span className="price__installments">{installments}</span>
       </div>
-
-      <footer className="drawer__footer">SubTotal: R$100,00</footer>
     </div>
   );
 }
