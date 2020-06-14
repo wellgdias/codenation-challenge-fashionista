@@ -1,7 +1,7 @@
 {
   "name": "Rose Store",
   "short_name": "Rose Store",
-  "theme_color": "#000000",
+  "theme_color": "#ffc0cb",
   "background_color": "#ffc0cb",
   "display": "standalone",
   "Scope": "/",
