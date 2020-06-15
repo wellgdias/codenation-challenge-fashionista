@@ -2,11 +2,11 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 
+import ProductDrawer from "../ProductDrawer";
+import Input from "../../components/Input";
+
 import { setProductInfo, setOpenDrawer, setValueFilter } from "../../actions";
 import { createPath } from "../../utils";
-
-import ProductDrawer from "../ProductDrawer";
-import Input from "../Input";
 
 import "./style.css";
 

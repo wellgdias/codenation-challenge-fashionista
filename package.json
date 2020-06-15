@@ -1,5 +1,6 @@
 {
   "name": "codenation-challenge-fashionista",
+  "author": "Wellington Dias",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

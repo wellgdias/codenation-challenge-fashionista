@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { FiX } from "react-icons/fi";
 
-import Button from "../Button";
+import Button from "../../components/Button";
 import DrawerFilter from "../DrawerFilter";
 import DrawerCart from "../DrawerCart";
 
@@ -44,7 +44,7 @@ export default function SlideDrawer() {
             <>
               <DrawerCart />
               <footer className="drawer__footer">
-                SubTotal: {numberFormatter.format(cart.total)}
+                Total: {numberFormatter.format(cart.total)}
               </footer>
             </>
           ) : (

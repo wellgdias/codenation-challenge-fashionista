@@ -1,5 +1,5 @@
 import React from "react";
-import ProductDetail from "../../components/ProductDetail";
+import ProductDetail from "../../containers/ProductDetail";
 
 export default function Product() {
   return <ProductDetail />;

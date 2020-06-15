@@ -8,9 +8,9 @@ import {
   SET_VALUE_FILTER,
   SET_AMOUNT_PRODUCT,
   DELETE_PRODUCT_CART,
-} from "./actionTypes";
+} from "../constants";
 
-import { sumCartField } from "./utils";
+import { sumCartField } from "../utils";
 
 const initialState = {
   catalog: {

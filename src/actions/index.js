@@ -8,9 +8,9 @@ import {
   SET_VALUE_FILTER,
   SET_AMOUNT_PRODUCT,
   DELETE_PRODUCT_CART,
-} from "./actionTypes";
+} from "../constants";
 
-import api from "./services";
+import api from "../services";
 
 export const loadCatalog = () => (dispatch) => {
   dispatch({ type: LOAD_CATALOG_LOADING });

@@ -4,9 +4,9 @@
 }
 
 .catalog__count {
-  color: #a7a7a7;
+  color: #4f4e4e;
   font-size: 14px;
-  font-weight: 400;
+  font-weight: bold;
 }
 
 .catalog__list {
@@ -16,4 +16,3 @@
   grid-template-rows: auto;
   z-index: 0;
 }
-

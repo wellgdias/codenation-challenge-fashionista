@@ -2,9 +2,9 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useDispatch } from "react-redux";
 
-import Image from "../Image";
-import Price from "../Price";
-import ProductName from "../Name";
+import Image from "../../components/Image";
+import Price from "../../components/Price";
+import ProductName from "../../components/Name";
 
 import { setProductInfo } from "../../actions";
 import { createPath } from "../../utils";
@@ -26,7 +26,6 @@ export default function Product({ product }) {
 
   function handleSetProductId(id) {
     dispatch(setProductInfo(id));
-    
   }
 
   return (

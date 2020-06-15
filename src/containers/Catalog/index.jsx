@@ -2,7 +2,7 @@ import React from "react";
 import { useSelector } from "react-redux";
 
 import Product from "../ProductCatalog";
-import Container from "../Container";
+import Container from "../../components/Container";
 
 import "./style.css";
 

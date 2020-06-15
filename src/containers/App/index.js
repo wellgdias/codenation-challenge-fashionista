@@ -2,15 +2,14 @@ import React, { useEffect } from "react";
 import { BrowserRouter } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 
-import { loadCatalog } from "./actions";
+import Topbar from "../Topbar";
+import SlideDrawer from "../SlideDrawer";
+import Backdrop from "../../components/Backdrop";
 
-import Topbar from "./components/Topbar";
-import SlideDrawer from "./components/SlideDrawer";
-import Backdrop from "./components/Backdrop";
+import { loadCatalog } from "../../actions";
+import Routes from "../../routes/index";
 
-import Routes from "./routes";
-
-import "./global.css";
+import "./style.css";
 
 export default function App() {
   const { drawer } = useSelector((state) => state);

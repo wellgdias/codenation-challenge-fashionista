@@ -1,10 +1,9 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-
 import { useDispatch, useSelector } from "react-redux";
 import { FiSearch, FiShoppingBag } from "react-icons/fi";
 
-import Button from "../Button";
+import Button from "../../components/Button";
 import { ReactComponent as LogoSvg } from "../../assets/logo.svg";
 
 import { setOpenDrawer } from "../../actions";

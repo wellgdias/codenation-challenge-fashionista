@@ -2,13 +2,13 @@ import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 
-import { setProductCart } from "../../actions";
+import Image from "../../components/Image";
+import Price from "../../components/Price";
+import ProductName from "../../components/Name";
+import Button from "../../components/Button";
+import Container from "../../components/Container";
 
-import Image from "../Image";
-import Price from "../Price";
-import ProductName from "../Name";
-import Button from "../Button";
-import Container from "../Container";
+import { setProductCart } from "../../actions";
 
 import "./style.css";
 

@@ -2,10 +2,10 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { FiPlus, FiMinus, FiTrash2 } from "react-icons/fi";
 
-import { setAmountProduct, deleteProductcart } from "../../actions";
+import Image from "../../components/Image";
+import Button from "../../components/Button";
 
-import Image from "../Image";
-import Button from "../Button";
+import { setAmountProduct, deleteProductcart } from "../../actions";
 
 import "./style.css";
 
