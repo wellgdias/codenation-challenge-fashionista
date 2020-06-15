@@ -15,16 +15,18 @@ import api from "../services";
 export const loadCatalog = () => (dispatch) => {
   dispatch({ type: LOAD_CATALOG_LOADING });
 
-  let id = 0; //alterar com a nova API
+  let id = 0;
   api.get("/catalog").then(
     (response) =>
       dispatch({
         type: LOAD_CATALOG_SUCCESS,
-        data: response.data.map((data) => {
-          id = id + 1;
-          data.id = id;
-          return data;
-        }),
+        data: response.data
+          .map((data) => {
+            id = id + 1;
+            data.id = id;
+            return data;
+          })
+          .filter((product) => product.name && product.style),
       }),
     (error) =>
       dispatch({

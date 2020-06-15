@@ -60,7 +60,7 @@ export default function Product() {
   }
 
   return (
-    <section className="product">
+    <section className="product" data-testid="product">
       {productDetail.length === 0 ? (
         history.push("/")
       ) : (

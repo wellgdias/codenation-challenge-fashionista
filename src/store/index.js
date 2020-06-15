@@ -2,7 +2,7 @@ import { createStore, compose, applyMiddleware } from "redux";
 import { persistStore, persistReducer } from "redux-persist";
 import storage from "redux-persist/lib/storage";
 import thunk from "redux-thunk";
-import reducer from "../reducers";
+import { Reducer } from "../reducers";
 
 const persistConfig = {
   key: "cart",
@@ -10,7 +10,7 @@ const persistConfig = {
   whitelist: ["cart"],
 };
 
-const persistedReducer = persistReducer(persistConfig, reducer);
+const persistedReducer = persistReducer(persistConfig, Reducer);
 
 const store = createStore(
   persistedReducer,

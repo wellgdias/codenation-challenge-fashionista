@@ -27,7 +27,7 @@ export default function DrawerFilter() {
   }
 
   return (
-    <div className="filter">
+    <div className="filter" data-testid="filter">
       <div className="filter__form">
         <Input
           className="filter__input"

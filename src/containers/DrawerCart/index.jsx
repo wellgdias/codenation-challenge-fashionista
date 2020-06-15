@@ -9,7 +9,7 @@ export default function DrawerCart() {
   const { cart } = useSelector((state) => state);
 
   return (
-    <div className="cart">
+    <div className="cart" data-testid="cart">
       <div className="cart__products">
         {cart.products.length === 0 ? (
           <p className="products__empty">

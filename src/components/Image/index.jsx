@@ -4,7 +4,7 @@ import "./style.css";
 
 export default function Image({ image, name, discount }) {
   return (
-    <figure className="product__image">
+    <figure className="product__image" data-testid="image">
       {discount && <span className="product__discount">-{discount}</span>}
 
       {image ? (

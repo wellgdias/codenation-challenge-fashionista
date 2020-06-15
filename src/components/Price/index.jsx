@@ -15,7 +15,7 @@ export default function Price({ regular, atual, installments }) {
     pathname === "/" ? "price__from--home" : "price__frome--product";
 
   return (
-    <div className={product__pricing}>
+    <div className={product__pricing} data-testid="price">
       {regular === atual ? (
         <>
           <span className={`${product__price} product__price--to`}>

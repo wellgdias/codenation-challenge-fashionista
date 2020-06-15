@@ -23,7 +23,7 @@ export default function SlideDrawer() {
   const drawerClasses = drawer.open ? "drawer is-open" : "drawer";
 
   return (
-    <div className={drawerClasses}>
+    <div className={drawerClasses} data-testid="slide">
       <div className="drawer__container">
         <header className="drawer__header">
           <Button

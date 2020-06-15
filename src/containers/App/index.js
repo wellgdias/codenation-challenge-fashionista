@@ -20,15 +20,17 @@ export default function App() {
   }, [dispatch]);
 
   return (
-    <BrowserRouter>
-      {drawer.open && (
-        <>
-          <SlideDrawer />
-          <Backdrop />
-        </>
-      )}
-      <Topbar />
-      <Routes />
-    </BrowserRouter>
+    <div data-testid="app">
+      <BrowserRouter>
+        {drawer.open && (
+          <>
+            <SlideDrawer />
+            <Backdrop />
+          </>
+        )}
+        <Topbar />
+        <Routes />
+      </BrowserRouter>
+    </div>
   );
 }

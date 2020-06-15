@@ -8,9 +8,13 @@ export default function ProductName(props) {
   return (
     <>
       {pathname === "/" ? (
-        <h4 className="product__name">{props.children}</h4>
+        <h4 className="product__name" data-testid="name">
+          {props.children}
+        </h4>
       ) : (
-        <h2 className="product__name">{props.children}</h2>
+        <h2 className="product__name" data-testid="name">
+          {props.children}
+        </h2>
       )}
     </>
   );

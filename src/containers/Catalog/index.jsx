@@ -13,9 +13,9 @@ export default function Catalog() {
   return (
     <>
       {loading ? (
-        <h1>Carregando</h1> //componente loading
+        <h1>Carregando...</h1>
       ) : (
-        <section className="catalog">
+        <section className="catalog" data-testid="catalog">
           <Container>
             <p className="catalog__count">{products.length} itens</p>
             <div className="catalog__list">

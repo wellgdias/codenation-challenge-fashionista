@@ -12,7 +12,7 @@ import {
 
 import { sumCartField } from "../utils";
 
-const initialState = {
+export const initialState = {
   catalog: {
     products: [],
     loading: false,
@@ -31,7 +31,7 @@ const initialState = {
   },
 };
 
-export default function Reducer(state = initialState, action) {
+export function Reducer(state = initialState, action) {
   switch (action.type) {
     case LOAD_CATALOG_LOADING: {
       return {

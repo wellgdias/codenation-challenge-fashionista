@@ -11,7 +11,7 @@ import { createPath } from "../../utils";
 
 import "./style.css";
 
-export default function Product({ product }) {
+export default function ProductCatalog({ product }) {
   const {
     id,
     discount_percentage,
@@ -21,7 +21,7 @@ export default function Product({ product }) {
     actual_price,
   } = product;
 
-  const dispatch = useDispatch(); // Mover a função para um "utils"
+  const dispatch = useDispatch();
   const path = createPath(name);
 
   function handleSetProductId(id) {
@@ -29,7 +29,7 @@ export default function Product({ product }) {
   }
 
   return (
-    <div className="product__info">
+    <div className="product__info" data-testid="product">
       <Link to={`/produto/${path}`} onClick={() => handleSetProductId(id)}>
         <Image image={image} name={name} discount={discount_percentage} />
       </Link>

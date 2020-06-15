@@ -9,6 +9,7 @@ export default function Input(props) {
       type="text"
       placeholder={props.placeholder}
       onChange={props.onChange}
+      data-testid="input"
     />
   );
 }

@@ -30,7 +30,7 @@ export default function ProductFilter(props) {
   }
 
   return (
-    <div className="drawer__product">
+    <div className="drawer__product" data-testid="product">
       <div className="drawer__image">
         <Image image={image} name={name} />
       </div>
