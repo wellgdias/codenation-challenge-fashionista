@@ -1,11 +1,6 @@
 import React from "react";
 import "@testing-library/jest-dom/extend-expect";
-// import { render } from "@testing-library/react";
 import { render } from "../utils/test-utils";
-
-// Verificar se vai usar mesmo
-// import { createMemoryHistory } from "history";
-// import { Router } from "react-router-dom";
 
 import Backdrop from "../components/Backdrop";
 import Button from "../components/Button";
