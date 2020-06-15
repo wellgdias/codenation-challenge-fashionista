@@ -23,7 +23,7 @@ Desenvolver as principais funcionalidades de um e-commerce de moda feminina, gar
  - Adicionar produto ao carrinho (sacola).
  - Busca de produtos.
  - Marcador de quantidade de itens do carrinho (sacola).
- - Layout resposivo.
+ - Layout responsivo.
  - PWA.
 
 ## Instalação
@@ -31,15 +31,15 @@ Desenvolver as principais funcionalidades de um e-commerce de moda feminina, gar
 ````
 git clone https://github.com/wellgdias/codenation-challenge-fashionista.git
 ````
-### Instalar as dependências
+#### Instalar as dependências
 ````
 npm install
 ````
-### Executar a aplicação
+#### Executar a aplicação
 ````
 npm start
 ````
-### Executar os testes da aplicação
+#### Executar os testes da aplicação
 ````
 npm test
 ````
