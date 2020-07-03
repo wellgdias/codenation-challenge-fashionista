@@ -8,15 +8,15 @@ import {
   SET_VALUE_FILTER,
   SET_AMOUNT_PRODUCT,
   DELETE_PRODUCT_CART,
-} from "../constants";
+} from '../constants';
 
-import api from "../services";
+import api from '../services';
 
 export const loadCatalog = () => (dispatch) => {
   dispatch({ type: LOAD_CATALOG_LOADING });
 
   let id = 0;
-  api.get("/catalog").then(
+  api.get('/5eff7f2bbb5fbb1d25638066').then(
     (response) =>
       dispatch({
         type: LOAD_CATALOG_SUCCESS,
@@ -31,7 +31,7 @@ export const loadCatalog = () => (dispatch) => {
     (error) =>
       dispatch({
         type: LOAD_CATALOG_ERROR,
-        error: error.message || "Unexpected Error!!!",
+        error: error.message || 'Unexpected Error!!!',
       })
   );
 };
